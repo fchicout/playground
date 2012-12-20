@@ -32,10 +32,11 @@ var APP = {
                                                         .end().removeClass('alunoSelecionado');
     },
 
-    getStudentNames: function(){
+    getStudentNames: function () {
+        var studentNames = new Array();
         jQuery(window.frames.CLMain.document).find("a[href=#]");
-        for(i=0; i < links.length; i++ ){ 
-            console.log(links[i].innerHTML); 
+        for (i = 0; i < links.length; i++) {
+            studentNames.push(links[i].innerHTML);
         }
     }
 };

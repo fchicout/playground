@@ -3,8 +3,8 @@
     var element1 = document.createElement("script");
     element1.src = "//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js";
     element1.type = "text/javascript";
+    document.getElementsByTagName("head")[0].appendChild(element1);
     element1.onload = function () {
-        document.getElementsByTagName("head")[0].appendChild(element1);
         jQuery(RMIE._frame).find("#dgAlunos tr").css('cursor', 'pointer')
                     .toggle(function (event) {
                         if (event.target.tagName != 'INPUT')
@@ -39,7 +39,7 @@
             book.ActiveSheet.Cells(i + 11, 3).Value = nameLinks[i].innerHTML;
         }
         sheet.Protect();
-        if(confirm("Deseja visualizar a planilha gerada?")){
+        if (confirm("Deseja visualizar a planilha gerada?")) {
             excel.visible = true;
         }
         excel.Close();
@@ -57,9 +57,9 @@
             var studentNumber = book.ActiveSheet.Cells(i + 11, 2).Value;
             // Pega o input que tenha o número de matrícula do indivíduo da linha da vez no Excel e Seta o valor da nota dele no input
             jQuery(window.frames.CLMain.document).find("tr:contains(" + studentNumber + ")").find("input").val(book.ActiveSheet.Cells(i + 11, stepCol).Value);
-            
+
             ++i;
-        } while (book.ActiveSheet.Cells(i+11, 2).Value == ""); // Enquanto a coluna de matrícula não estiver vazia no Excel, o script continua digitando nota.
+        } while (book.ActiveSheet.Cells(i + 11, 2).Value != ""); // Enquanto a coluna de matrícula não estiver vazia no Excel, o script continua digitando nota.
 
 
     }
